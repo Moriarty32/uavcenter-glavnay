@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "viewports": [
     {
       "width": 320,
@@ -574,5 +574,78 @@
         "horizontal": 0
       }
     }
-  ]
+  ],
+  "buttonSizing": {
+    "testedAt": "2026-11-12T10:38:34.965Z",
+    "previousVersion": 3,
+    "viewports": [
+      [
+        320,
+        568
+      ],
+      [
+        320,
+        1000
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        390,
+        1000
+      ],
+      [
+        600,
+        800
+      ],
+      [
+        768,
+        1024
+      ],
+      [
+        1024,
+        600
+      ],
+      [
+        1280,
+        720
+      ],
+      [
+        1440,
+        900
+      ],
+      [
+        1440,
+        1000
+      ],
+      [
+        1920,
+        1080
+      ],
+      [
+        2560,
+        1440
+      ],
+      [
+        3440,
+        1440
+      ],
+      [
+        3840,
+        2160
+      ]
+    ],
+    "layoutAndFormStates": 69,
+    "checks": [
+      "Content-based width and 10–12px label/arrow gap",
+      "Labels and arrows fit inside each button without clipping",
+      "No horizontal page overflow from 320px to 4K",
+      "Desktop first screen fits viewport after sizing changes",
+      "All form steps and completion buttons",
+      "Original rolling-label and arrow hover animation without button resizing"
+    ],
+    "errors": [],
+    "failedResponses": []
+  }
 }
