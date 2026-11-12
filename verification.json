@@ -1,5 +1,267 @@
 {
+  "version": 3,
   "viewports": [
+    {
+      "width": 320,
+      "height": 568,
+      "scroll": 320,
+      "heroBottom": 872.453125,
+      "cta": 472.234375,
+      "copyFits": true,
+      "heroOverlap": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scroll": 390,
+      "heroBottom": 820.6875,
+      "cta": 457.671875,
+      "copyFits": true,
+      "heroOverlap": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "width": 600,
+      "height": 800,
+      "scroll": 600,
+      "heroBottom": 848.03125,
+      "cta": 491.90625,
+      "copyFits": true,
+      "heroOverlap": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "scroll": 768,
+      "heroBottom": 1024,
+      "cta": 671.6875,
+      "copyFits": true,
+      "heroOverlap": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "width": 820,
+      "height": 600,
+      "scroll": 820,
+      "heroBottom": 600,
+      "cta": 451.578125,
+      "copyFits": true,
+      "heroOverlap": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "scroll": 1024,
+      "heroBottom": 768,
+      "cta": 546.453125,
+      "copyFits": true,
+      "heroOverlap": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "scroll": 1280,
+      "heroBottom": 720.3125,
+      "cta": 530.265625,
+      "copyFits": true,
+      "heroOverlap": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "scroll": 1366,
+      "heroBottom": 768.46875,
+      "cta": 562.4375,
+      "copyFits": true,
+      "heroOverlap": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "scroll": 1440,
+      "heroBottom": 900.34375,
+      "cta": 654.6875,
+      "copyFits": true,
+      "heroOverlap": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "width": 1536,
+      "height": 864,
+      "scroll": 1536,
+      "heroBottom": 863.578125,
+      "cta": 633.171875,
+      "copyFits": true,
+      "heroOverlap": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "scroll": 1920,
+      "heroBottom": 1080.453125,
+      "cta": 791.609375,
+      "copyFits": true,
+      "heroOverlap": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "width": 1920,
+      "height": 900,
+      "scroll": 1920,
+      "heroBottom": 900.453125,
+      "cta": 671.859375,
+      "copyFits": true,
+      "heroOverlap": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "width": 2560,
+      "height": 1080,
+      "scroll": 2560,
+      "heroBottom": 1079.625,
+      "cta": 814.125,
+      "copyFits": true,
+      "heroOverlap": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "width": 2560,
+      "height": 1440,
+      "scroll": 2560,
+      "heroBottom": 1439.625,
+      "cta": 1041.671875,
+      "copyFits": true,
+      "heroOverlap": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "width": 3440,
+      "height": 1440,
+      "scroll": 3440,
+      "heroBottom": 1440.34375,
+      "cta": 1080.25,
+      "copyFits": true,
+      "heroOverlap": [
+        true,
+        true,
+        true
+      ]
+    }
+  ],
+  "checks": [
+    "15 viewport combinations; desktop hero including header fits viewport height; commercial CTA visible; hero copy and routes fit; map adapts with 44px touch targets",
+    "All 38 source projects: correct selection, titles, original photographs, detailed dialogs, hectares/kilometres and restored focus",
+    "Four independent map filters keep markers, counts and list synchronized; previous/next wrap correctly",
+    "Map clusters zoom, overlapping projects can be selected at maximum zoom; zoom limits, reset, keyboard navigation and mouse drag work",
+    "Mobile map project dialog, similar-project request and WCAG A/AA accessibility checks",
+    "No-JavaScript fallback presents the schematic and source geography link without inactive controls",
+    "12 viewport combinations from 320x568 to 2560x1440; full-width sections; no horizontal overflow; mobile CTA within 560px; one constrained dialog",
+    "Eight service panels keep images, descriptions and request context together; two-column keyboard navigation and task selection",
+    "Both tab groups: all six panels load; arrow keys and Home/End; hidden panels removed from focus order",
+    "Regional filters; three project dialogs; contents, Escape, restored focus and accessibility",
+    "All three original menu groups: hover, keyboard focus, Escape and accessible links",
+    "Mobile navigation opens, groups expand, Escape closes and restores focus",
+    "Quick form validates contact and consent, safely renders text, produces TXT download and mailto draft, allows editing; no fake submission",
+    "Page form, branded dropdown keyboard selection, synchronized native value and correct summary",
+    "FAQ; visible image loading; valid internal anchor targets",
+    "Finite heading animation, rolling button labels, bounded photo parallax; reduced-motion resets movement",
+    "No-JavaScript fallback keeps the proposition, service content and contact paths"
+  ],
+  "accessibility": [
+    {
+      "width": 390,
+      "state": "page-with-map",
+      "violations": 0
+    },
+    {
+      "width": 768,
+      "state": "page-with-map",
+      "violations": 0
+    },
+    {
+      "width": 1440,
+      "state": "page-with-map",
+      "violations": 0
+    },
+    {
+      "width": 390,
+      "state": "page",
+      "violations": 0
+    },
+    {
+      "width": 768,
+      "state": "page",
+      "violations": 0
+    },
+    {
+      "width": 1440,
+      "state": "page",
+      "violations": 0
+    },
+    {
+      "width": 390,
+      "state": "request-complete",
+      "violations": 0
+    },
+    {
+      "width": 1440,
+      "state": "request-complete",
+      "violations": 0
+    }
+  ],
+  "errors": [],
+  "failed": [],
+  "testedAt": "2026-11-12T10:00:34.464Z",
+  "regressionViewports": [
     {
       "width": 320,
       "height": 568,
@@ -134,7 +396,7 @@
       "width": 768,
       "height": 1024,
       "scroll": 768,
-      "cta": 616.921875,
+      "cta": 671.6875,
       "sections": [
         737.265625,
         737.265625,
@@ -160,7 +422,7 @@
       "width": 820,
       "height": 600,
       "scroll": 820,
-      "cta": 492.90625,
+      "cta": 451.578125,
       "sections": [
         787.1875,
         787.1875,
@@ -186,7 +448,7 @@
       "width": 1024,
       "height": 768,
       "scroll": 1024,
-      "cta": 605.546875,
+      "cta": 546.453125,
       "sections": [
         983.03125,
         983.03125,
@@ -212,7 +474,7 @@
       "width": 1280,
       "height": 800,
       "scroll": 1280,
-      "cta": 626,
+      "cta": 578.5,
       "sections": [
         1228.796875,
         1228.796875,
@@ -238,7 +500,7 @@
       "width": 1440,
       "height": 900,
       "scroll": 1440,
-      "cta": 663.0625,
+      "cta": 654.6875,
       "sections": [
         1382.390625,
         1382.390625,
@@ -264,7 +526,7 @@
       "width": 1920,
       "height": 1080,
       "scroll": 1920,
-      "cta": 865.34375,
+      "cta": 791.609375,
       "sections": [
         1843.1875,
         1843.1875,
@@ -290,7 +552,7 @@
       "width": 2560,
       "height": 1440,
       "scroll": 2560,
-      "cta": 1033.453125,
+      "cta": 1041.671875,
       "sections": [
         2457.59375,
         2457.59375,
@@ -312,53 +574,5 @@
         "horizontal": 0
       }
     }
-  ],
-  "accessibility": [
-    {
-      "width": 390,
-      "state": "page",
-      "violations": 0
-    },
-    {
-      "width": 768,
-      "state": "page",
-      "violations": 0
-    },
-    {
-      "width": 1440,
-      "state": "page",
-      "violations": 0
-    },
-    {
-      "width": 390,
-      "state": "request-complete",
-      "violations": 0
-    },
-    {
-      "width": 1440,
-      "state": "request-complete",
-      "violations": 0
-    }
-  ],
-  "checks": [
-    "12 viewport combinations from 320x568 to 2560x1440; full-width sections; no horizontal overflow; mobile CTA within 560px; one constrained dialog",
-    "Eight service panels keep images, descriptions and request context together; two-column keyboard navigation and task selection",
-    "Both tab groups: all six panels load; arrow keys and Home/End; hidden panels removed from focus order",
-    "Regional filters; three project dialogs; contents, Escape, restored focus and accessibility",
-    "All three original menu groups: hover, keyboard focus, Escape and accessible links",
-    "Mobile navigation opens, groups expand, Escape closes and restores focus",
-    "Quick form validates contact and consent, safely renders text, produces TXT download and mailto draft, allows editing; no fake submission",
-    "Page form, branded dropdown keyboard selection, synchronized native value and correct summary",
-    "FAQ; visible image loading; valid internal anchor targets",
-    "Finite heading animation, rolling button labels, bounded photo parallax; reduced-motion resets movement",
-    "No-JavaScript fallback keeps the proposition, service content and contact paths",
-    "Mobile service selection scrolls to the matching image and heading; requests preserve topic; return link restores catalogue focus",
-    "Region is editable and remains distinct from task after repeat save; new request clears unrelated task, region and consent",
-    "All eight selected service states pass axe WCAG A/AA and fit at 320, 768 and 1440px",
-    "Team photograph remains fully opaque, without a dark reveal layer"
-  ],
-  "errors": [],
-  "failed": [],
-  "testedAt": "2026-11-12T09:45:12.472Z",
-  "version": 2
+  ]
 }
