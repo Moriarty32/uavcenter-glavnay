@@ -1,47 +1,5 @@
 (() => {
  'use strict';
- const services=[
-  {
-    "title": "Геодезическая аэрофотосъёмка",
-    "image": "result-plan-1280.webp",
-    "caption": "Ортофотоплан и топографические слои · демонстрация"
-  },
-  {
-    "title": "Воздушное лазерное сканирование",
-    "image": "result-model-1280.webp",
-    "caption": "Модель поверхности · демонстрация"
-  },
-  {
-    "title": "Подсчёт объёмов запасов",
-    "image": "result-volume-1280.webp",
-    "caption": "Расчётная поверхность · демонстрация"
-  },
-  {
-    "title": "Векторизация топосъёмки",
-    "image": "result-plan-1280.webp",
-    "caption": "Топографические слои · демонстрация"
-  },
-  {
-    "title": "Съёмка сельскохозяйственных угодий",
-    "image": "agriculture-illustration.webp",
-    "caption": "Агротехнологии с БПЛА · иллюстрация"
-  },
-  {
-    "title": "Обработка агродронами",
-    "image": "agriculture-illustration.webp",
-    "caption": "Работа агродрона · иллюстрация"
-  },
-  {
-    "title": "Художественная аэросъёмка",
-    "image": "hero-city-1600.webp",
-    "caption": "Аэрофотосъёмка территории · иллюстрация"
-  },
-  {
-    "title": "Сертификат эксплуатанта",
-    "image": "certificate.webp",
-    "caption": "Сертификат АР-289 · опубликованный документ"
-  }
-];
  const projects=[
   {
     "id": "kuzbass",
@@ -90,18 +48,19 @@
  mobile.addEventListener('change',()=>closeMenu());
  let previousScroll=scrollY;
  addEventListener('scroll',()=>{const current=scrollY;document.querySelector('.header').classList.toggle('header-away',current>200&&current>previousScroll);previousScroll=current;},{passive:true});
+ // Upward anchor navigation must leave room for the returning sticky header.
+ all('a[href^="#"]').forEach(link=>link.addEventListener('click',()=>{const target=byId(decodeURIComponent(link.hash.slice(1)));if(target)target.style.scrollMarginTop=target.getBoundingClientRect().top<0?document.querySelector('.header').getBoundingClientRect().height+'px':'0px';}));
  const requestSection=byId('request'),requestHome=document.createComment('Desktop request position');requestSection.before(requestHome);
  const sectionLabels=new Map(all('main>.section').map(section=>[section,section.querySelector('.eyebrow').textContent]));
  function prioritize(){if(mobile.matches)document.querySelector('.home-hero').after(requestSection);else requestHome.after(requestSection);all('main>.section').forEach((section,i)=>{const original=sectionLabels.get(section);section.querySelector('.eyebrow').textContent=mobile.matches?original.replace(/^\d+/,String(i+1).padStart(2,'0')):original;});}
  prioritize();mobile.addEventListener('change',prioritize);
- // Keep the service image synchronized with the one open row.
- const rows=all('.service-row');
- function setService(index){const item=services[index];if(!item)return;rows.forEach((r,i)=>r.open=i===index);byId('service-image').src='assets/'+item.image;byId('service-image').alt=item.caption;document.querySelector('.service-frame').classList.toggle('is-document',item.image==='certificate.webp');byId('service-caption').textContent=item.caption;byId('service-counter').textContent=String(index+1).padStart(2,'0')+' / 08';}
- rows.forEach((row,i)=>row.addEventListener('toggle',()=>{if(row.open){rows.forEach(other=>{if(other!==row)other.open=false;});const item=services[i];byId('service-image').src='assets/'+item.image;byId('service-image').alt=item.caption;document.querySelector('.service-frame').classList.toggle('is-document',item.image==='certificate.webp');byId('service-caption').textContent=item.caption;byId('service-counter').textContent=String(i+1).padStart(2,'0')+' / 08';}}));
- all('[data-service-target]').forEach(button=>button.addEventListener('click',()=>{const i=Number(button.dataset.serviceTarget);setService(i);rows[i].scrollIntoView({block:'center',behavior:reduced.matches?'instant':'smooth'});rows[i].querySelector('summary').focus({preventScroll:true});}));
- // Two independent accessible tab groups, with automatic keyboard activation.
- function activateTab(tab,focus=false){const list=tab.closest('[role=tablist]');all('[role=tab]',list).forEach(t=>{const selected=t===tab;t.setAttribute('aria-selected',String(selected));t.tabIndex=selected?0:-1;byId(t.getAttribute('aria-controls')).hidden=!selected;});if(focus)tab.focus();}
- all('[role=tablist]').forEach(list=>{const tabs=all('[role=tab]',list);tabs.forEach((tab,index)=>{tab.addEventListener('click',()=>activateTab(tab));tab.addEventListener('keydown',e=>{const next={ArrowRight:(index+1)%tabs.length,ArrowDown:(index+1)%tabs.length,ArrowLeft:(index+tabs.length-1)%tabs.length,ArrowUp:(index+tabs.length-1)%tabs.length,Home:0,End:tabs.length-1}[e.key];if(next===undefined)return;e.preventDefault();activateTab(tabs[next],true);});});});
+ // Each service keeps its own image, description and request context in one panel.
+ function selectService(index,move=false){const tab=byId('service-tab-'+index);if(!tab)return;activateTab(tab);if(move){const panel=byId(tab.getAttribute('aria-controls'));panel.scrollIntoView({block:'start',behavior:reduced.matches?'instant':'smooth'});panel.querySelector('h3').focus({preventScroll:true});}}
+ all('[data-service-target]').forEach(button=>button.addEventListener('click',()=>selectService(Number(button.dataset.serviceTarget),true)));
+ all('.service-back').forEach(link=>link.addEventListener('click',event=>{event.preventDefault();byId('service-catalog').scrollIntoView({block:'start',behavior:reduced.matches?'instant':'smooth'});document.querySelector('.service-tabs [aria-selected=true]').focus({preventScroll:true});}));
+ // Independent accessible tab groups, with automatic keyboard activation.
+ function activateTab(tab,focus=false){const list=tab.closest('[role=tablist]');all('[role=tab]',list).forEach(t=>{const selected=t===tab;t.setAttribute('aria-selected',String(selected));t.tabIndex=selected?0:-1;const panel=byId(t.getAttribute('aria-controls'));panel.hidden=!selected;if(selected)all('img',panel).forEach(img=>img.loading='eager');});if(focus)tab.focus();}
+ all('[role=tablist]').forEach(list=>{const tabs=all('[role=tab]',list);tabs.forEach((tab,index)=>{tab.addEventListener('click',()=>{activateTab(tab);if(mobile.matches&&list.classList.contains('service-tabs'))selectService(Number(tab.dataset.service),true);});tab.addEventListener('keydown',e=>{const step=list.classList.contains('service-tabs')?2:1;const next={ArrowRight:(index+1)%tabs.length,ArrowDown:(index+step)%tabs.length,ArrowLeft:(index+tabs.length-1)%tabs.length,ArrowUp:(index+tabs.length-step)%tabs.length,Home:0,End:tabs.length-1}[e.key];if(next===undefined)return;e.preventDefault();activateTab(tabs[next],true);});});});
  all('[data-direction-link]').forEach(link=>link.addEventListener('click',()=>activateTab(byId('direction-'+link.dataset.directionLink))));
  const directionPreload=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){all('.direction-panel img').forEach(img=>img.loading='eager');directionPreload.disconnect();}},{rootMargin:'800px'});directionPreload.observe(byId('directions'));
  all('[data-project-filter]').forEach(button=>button.addEventListener('click',()=>{const zone=button.dataset.projectFilter;all('[data-project-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));let count=0;all('.project-card').forEach(card=>{const visible=zone==='all'||card.dataset.zone===zone;card.hidden=!visible;if(visible)count++;});byId('project-count').textContent=count+(count===1?' проект':' проекта');}));
@@ -113,7 +72,7 @@
  let selectedProject;
  all('[data-project]').forEach(button=>button.addEventListener('click',()=>{const p=projects.find(item=>item.id===button.dataset.project);if(!p)return;selectedProject=p;byId('project-dialog-title').textContent=p.title;byId('project-dialog-region').textContent=p.region+' / '+p.area+' га';byId('project-dialog-description').textContent=p.description;byId('project-dialog-detail').textContent=p.detail;byId('project-dialog-image').src='assets/'+p.image;byId('project-dialog-image').alt=p.title+' — фотография из материалов ЦБТ';showDialog(projectDialog,button);}));
  const quick=byId('quick-request'),complete=byId('request-complete');let draft;
- function openRequest(interest,opener){complete.hidden=true;quick.hidden=false;quick.elements.interest.value=interest||'Инженерные услуги';byId('request-dialog-title').innerHTML='Расскажите,<br> что нужно<br> сделать.';showDialog(requestDialog,opener);document.querySelector('.request-dialog-grid').scrollTop=0;document.querySelector('.request-dialog-body').scrollTop=0;}
+ function openRequest(interest,opener){complete.hidden=true;quick.hidden=false;const nextInterest=interest||'Инженерные услуги';if(quick.elements.interest.value!==nextInterest){quick.elements.task.value='';quick.elements.region.value='';quick.elements.consent.checked=false;}quick.elements.interest.value=nextInterest;quick.querySelector('.quick-region-field').hidden=!quick.elements.region.value;byId('request-dialog-title').innerHTML='Расскажите,<br> что нужно<br> сделать.';showDialog(requestDialog,opener);document.querySelector('.request-dialog-grid').scrollTop=0;document.querySelector('.request-dialog-body').scrollTop=0;}
  all('[data-request],[data-estimate-open]').forEach(button=>button.addEventListener('click',e=>{e.preventDefault();openRequest(button.dataset.request||'Инженерные услуги',button);}));
  byId('project-dialog-request').addEventListener('click',()=>{const opener=dialogOpeners.get(projectDialog);projectDialog.close();openRequest('Похожий объект: '+selectedProject.title,opener);});
  function validate(form){const contact=form.elements.contact,value=contact.value.trim();const email=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);const phone=/^[+()\d\s.-]+$/.test(value)&&value.replace(/\D/g,'').length>=10&&value.replace(/\D/g,'').length<=15;contact.setCustomValidity(email||phone?'':'Укажите корректный телефон или e-mail.');const bad=all('input,select,textarea',form).find(e=>!e.checkValidity());if(bad){bad.reportValidity();return false;}return true;}
@@ -121,7 +80,7 @@
  function draftText(){return ['Запрос — Центр беспилотных технологий','',...Object.entries({Контакт:draft.contact,Тема:draft.interest,Объект:draft.region||'Уточняется',Задача:draft.task||'Уточняется'}).map(([k,v])=>k+': '+v),'','Стоимость и сроки определяются индивидуально.','Сформировано в демонстрации. Автоматической отправки не было.'].join('\r\n');}
  function showComplete(data,opener){draft=data;quick.hidden=true;complete.hidden=false;byId('request-summary').replaceChildren();for(const [name,value]of[['Контакт',data.contact],['Тема',data.interest],['Объект',data.region],['Задача',data.task]]){if(!value)continue;const row=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=name;dd.textContent=value;row.append(dt,dd);byId('request-summary').append(row);}byId('email-request').href='mailto:info@uavcenter.ru?subject='+encodeURIComponent('Запрос: '+data.interest)+'&body='+encodeURIComponent(draftText());byId('request-dialog-title').innerHTML='От задачи<br> к следующему<br> шагу.';if(!requestDialog.open)showDialog(requestDialog,opener);complete.focus({preventScroll:true});document.querySelector('.request-dialog-body').scrollTop=0;document.querySelector('.request-dialog-grid').scrollTop=0;}
  all('.request-form').forEach(form=>{form.addEventListener('input',()=>{form.elements.contact.setCustomValidity('');});form.addEventListener('submit',e=>{e.preventDefault();if(!validate(form))return;showComplete(readForm(form),form.querySelector('[type=submit]'));});});
- byId('edit-request').addEventListener('click',()=>{complete.hidden=true;quick.hidden=false;quick.elements.contact.value=draft.contact;quick.elements.interest.value=draft.interest;quick.elements.task.value=[draft.region,draft.task].filter(Boolean).join('\n');quick.elements.consent.checked=true;byId('request-dialog-title').innerHTML='Расскажите,<br> что нужно<br> сделать.';quick.elements.contact.focus();});
+ byId('edit-request').addEventListener('click',()=>{complete.hidden=true;quick.hidden=false;quick.elements.contact.value=draft.contact;quick.elements.interest.value=draft.interest;quick.elements.region.value=draft.region;quick.querySelector('.quick-region-field').hidden=!draft.region;quick.elements.task.value=draft.task;quick.elements.consent.checked=true;byId('request-dialog-title').innerHTML='Расскажите,<br> что нужно<br> сделать.';quick.elements.contact.focus();});
  byId('download-request').addEventListener('click',()=>{const url=URL.createObjectURL(new Blob(['\uFEFF'+draftText()],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='ЦБТ-запрос.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
  const sticky=document.querySelector('.mobile-cta');
  document.addEventListener('focusin',e=>{if(e.target.matches('input,textarea,select')){sticky.classList.add('is-hidden');sticky.inert=true;}});

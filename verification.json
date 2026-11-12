@@ -4,7 +4,7 @@
       "width": 320,
       "height": 568,
       "scroll": 320,
-      "cta": 428.84375,
+      "cta": 472.234375,
       "sections": [
         284,
         284,
@@ -30,7 +30,7 @@
       "width": 360,
       "height": 740,
       "scroll": 360,
-      "cta": 428.84375,
+      "cta": 447.59375,
       "sections": [
         324,
         324,
@@ -56,7 +56,7 @@
       "width": 390,
       "height": 844,
       "scroll": 390,
-      "cta": 416.78125,
+      "cta": 457.671875,
       "sections": [
         354,
         354,
@@ -82,7 +82,7 @@
       "width": 430,
       "height": 932,
       "scroll": 430,
-      "cta": 430.53125,
+      "cta": 468.828125,
       "sections": [
         394,
         394,
@@ -108,7 +108,7 @@
       "width": 600,
       "height": 800,
       "scroll": 600,
-      "cta": 488.90625,
+      "cta": 491.90625,
       "sections": [
         564,
         564,
@@ -134,7 +134,7 @@
       "width": 768,
       "height": 1024,
       "scroll": 768,
-      "cta": 632.34375,
+      "cta": 616.921875,
       "sections": [
         737.265625,
         737.265625,
@@ -149,9 +149,9 @@
       ],
       "overflow": [],
       "dialog": {
-        "top": 175.15625,
-        "bottom": 848.84375,
-        "close": 230.15625,
+        "top": 183.203125,
+        "bottom": 840.796875,
+        "close": 238.203125,
         "scroll": 0,
         "horizontal": 0
       }
@@ -160,7 +160,7 @@
       "width": 820,
       "height": 600,
       "scroll": 820,
-      "cta": 606.21875,
+      "cta": 492.90625,
       "sections": [
         787.1875,
         787.1875,
@@ -186,7 +186,7 @@
       "width": 1024,
       "height": 768,
       "scroll": 1024,
-      "cta": 592.453125,
+      "cta": 605.546875,
       "sections": [
         983.03125,
         983.03125,
@@ -201,9 +201,9 @@
       ],
       "overflow": [],
       "dialog": {
-        "top": 66.40625,
-        "bottom": 701.59375,
-        "close": 121.40625,
+        "top": 55.203125,
+        "bottom": 712.796875,
+        "close": 110.203125,
         "scroll": 0,
         "horizontal": 0
       }
@@ -212,7 +212,7 @@
       "width": 1280,
       "height": 800,
       "scroll": 1280,
-      "cta": 597,
+      "cta": 626,
       "sections": [
         1228.796875,
         1228.796875,
@@ -227,9 +227,9 @@
       ],
       "overflow": [],
       "dialog": {
-        "top": 82.40625,
-        "bottom": 717.59375,
-        "close": 137.40625,
+        "top": 92.203125,
+        "bottom": 707.796875,
+        "close": 147.203125,
         "scroll": 0,
         "horizontal": 0
       }
@@ -238,7 +238,7 @@
       "width": 1440,
       "height": 900,
       "scroll": 1440,
-      "cta": 633.125,
+      "cta": 663.0625,
       "sections": [
         1382.390625,
         1382.390625,
@@ -253,9 +253,9 @@
       ],
       "overflow": [],
       "dialog": {
-        "top": 132.40625,
-        "bottom": 767.59375,
-        "close": 187.40625,
+        "top": 142.203125,
+        "bottom": 757.796875,
+        "close": 197.203125,
         "scroll": 0,
         "horizontal": 0
       }
@@ -264,7 +264,7 @@
       "width": 1920,
       "height": 1080,
       "scroll": 1920,
-      "cta": 828.546875,
+      "cta": 865.34375,
       "sections": [
         1843.1875,
         1843.1875,
@@ -279,9 +279,9 @@
       ],
       "overflow": [],
       "dialog": {
-        "top": 222.40625,
-        "bottom": 857.59375,
-        "close": 277.40625,
+        "top": 232.203125,
+        "bottom": 847.796875,
+        "close": 287.203125,
         "scroll": 0,
         "horizontal": 0
       }
@@ -290,7 +290,7 @@
       "width": 2560,
       "height": 1440,
       "scroll": 2560,
-      "cta": 962.21875,
+      "cta": 1033.453125,
       "sections": [
         2457.59375,
         2457.59375,
@@ -305,9 +305,9 @@
       ],
       "overflow": [],
       "dialog": {
-        "top": 402.40625,
-        "bottom": 1037.59375,
-        "close": 457.40625,
+        "top": 412.203125,
+        "bottom": 1027.796875,
+        "close": 467.203125,
         "scroll": 0,
         "horizontal": 0
       }
@@ -342,7 +342,7 @@
   ],
   "checks": [
     "12 viewport combinations from 320x568 to 2560x1440; full-width sections; no horizontal overflow; mobile CTA within 560px; one constrained dialog",
-    "Eight service rows synchronize images and captions; task selection focuses the matching service",
+    "Eight service panels keep images, descriptions and request context together; two-column keyboard navigation and task selection",
     "Both tab groups: all six panels load; arrow keys and Home/End; hidden panels removed from focus order",
     "Regional filters; three project dialogs; contents, Escape, restored focus and accessibility",
     "All three original menu groups: hover, keyboard focus, Escape and accessible links",
@@ -351,9 +351,14 @@
     "Page form, branded dropdown keyboard selection, synchronized native value and correct summary",
     "FAQ; visible image loading; valid internal anchor targets",
     "Finite heading animation, rolling button labels, bounded photo parallax; reduced-motion resets movement",
-    "No-JavaScript fallback keeps the proposition, service content and contact paths"
+    "No-JavaScript fallback keeps the proposition, service content and contact paths",
+    "Mobile service selection scrolls to the matching image and heading; requests preserve topic; return link restores catalogue focus",
+    "Region is editable and remains distinct from task after repeat save; new request clears unrelated task, region and consent",
+    "All eight selected service states pass axe WCAG A/AA and fit at 320, 768 and 1440px",
+    "Team photograph remains fully opaque, without a dark reveal layer"
   ],
   "errors": [],
   "failed": [],
-  "testedAt": "2026-11-12T09:01:17.534Z"
+  "testedAt": "2026-11-12T09:45:12.472Z",
+  "version": 2
 }
