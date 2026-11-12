@@ -52,8 +52,7 @@
  all('a[href^="#"]').forEach(link=>link.addEventListener('click',()=>{const target=byId(decodeURIComponent(link.hash.slice(1)));if(target)target.style.scrollMarginTop=target.getBoundingClientRect().top<0?document.querySelector('.header').getBoundingClientRect().height+'px':'0px';}));
  const header=document.querySelector('.header');new ResizeObserver(()=>document.documentElement.style.setProperty('--header-height',header.offsetHeight+'px')).observe(header);
  const requestSection=byId('request'),requestHome=document.createComment('Desktop request position');requestSection.before(requestHome);
- const sectionLabels=new Map(all('main>.section').map(section=>[section,section.querySelector('.eyebrow').textContent]));
- function prioritize(){if(mobile.matches)document.querySelector('.home-hero').after(requestSection);else requestHome.after(requestSection);all('main>.section').forEach((section,i)=>{const original=sectionLabels.get(section);section.querySelector('.eyebrow').textContent=mobile.matches?original.replace(/^\d+/,String(i+1).padStart(2,'0')):original;});}
+ function prioritize(){if(mobile.matches)document.querySelector('.home-hero').after(requestSection);else requestHome.after(requestSection);}
  prioritize();mobile.addEventListener('change',prioritize);
  // Each service keeps its own image, description and request context in one panel.
  function selectService(index,move=false){const tab=byId('service-tab-'+index);if(!tab)return;activateTab(tab);if(move){const panel=byId(tab.getAttribute('aria-controls'));panel.scrollIntoView({block:'start',behavior:reduced.matches?'instant':'smooth'});panel.querySelector('h3').focus({preventScroll:true});}}
